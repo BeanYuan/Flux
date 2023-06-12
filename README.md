@@ -7,3 +7,5 @@ The prefab is a player Prefab I made for character animation and sprite texture.
 The Scenes are made to achieve time travel scenes change.
 We have different audio for land animation. When you land, you will hear different sounds.
 Tarodev 2D controller is a open source, which is modified by me to control and achieve the motion or character.
+For prefab, we have some particles prefab and character prefab.
+For progression, when player press the SPACE key, the scene will change.
