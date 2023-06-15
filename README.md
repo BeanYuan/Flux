@@ -23,3 +23,13 @@ Built with Unity, Flux leverages a combination of hand-crafted assets and open-s
 **Advanced Visual Assets:** Flux boasts a consistent and engaging art style, from the tile maps and decorations within the game world to the menus and interfaces. Every visual element has been carefully curated to enhance your gaming experience.
 
 **Procedural Audio:** Our audio design complements our gameplay. Unique sounds accompany key game events - the landing of the character, the pickup of keys, the opening of doors - and a dynamic background score sets the mood. With our audio, we bring Flux's world to life.
+
+## Contributors
+
+- Lizhuoyuan Wan
+- Austin Chen
+- Izaiah Lozamo
+
+## Acknowledgements
+
+We have used some assets from Craftpix.net to enrich the visual experience of Flux. We express our gratitude to the creators and designers for providing such valuable resources.
