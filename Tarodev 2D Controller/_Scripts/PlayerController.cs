@@ -19,6 +19,8 @@ namespace TarodevController {
         public Vector3 RawMovement { get; private set; }
         public bool Grounded => _colDown;
 
+        public Joystick joystick;
+
         private Vector3 _lastPosition;
         private float _currentHorizontalSpeed, _currentVerticalSpeed;
 
@@ -49,9 +51,12 @@ namespace TarodevController {
 
         private void GatherInput() {
             Input = new FrameInput {
-                JumpDown = UnityEngine.Input.GetButtonDown("Jump"),
+                /*JumpDown = UnityEngine.Input.GetButtonDown("Jump"),
                 JumpUp = UnityEngine.Input.GetButtonUp("Jump"),
-                X = UnityEngine.Input.GetAxisRaw("Horizontal")
+                X = UnityEngine.Input.GetAxisRaw("Horizontal")*/
+                JumpDown = joystick.Vertical > 0.5f || UnityEngine.Input.GetButtonDown("Jump"),
+                JumpUp = joystick.Vertical <= 0.5f || UnityEngine.Input.GetButtonUp("Jump"),
+                X = joystick.Horizontal + UnityEngine.Input.GetAxisRaw("Horizontal")
             };
             if (Input.JumpDown) {
                 _lastJumpPressed = Time.time;
@@ -283,9 +288,20 @@ namespace TarodevController {
                     transform.position = positionToMoveTo;
 
                     // We've landed on a corner or hit our head on a ledge. Nudge the player gently
-                    if (i == 1) {
+                    if (i == 1 && Time.timeScale != 0) {
                         if (_currentVerticalSpeed < 0) _currentVerticalSpeed = 0;
                         var dir = transform.position - hit.transform.position;
+
+                        if (dir == Vector3.zero)
+                        {
+                            Debug.LogError("Dir is a zero vector!");
+                            return;  // 提前结束方法
+                        }
+                        if (move == Vector3.zero)
+                        {
+                            Debug.LogError("Move is a zero vector!");
+                            return;  // 提前结束方法
+                        }
                         transform.position += dir.normalized * move.magnitude;
                     }
 
